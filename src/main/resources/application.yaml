@@ -1,0 +1,24 @@
+ribbon:
+  ConnectTimeout: 30000
+  ReadTimeout: 990000
+  maxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+zuul:
+  ignoredServices: '*'
+  sensitiveHeaders: '*'
+  routes:
+    product:
+      path: /api/v1/products/**
+      serviceId: product-microservice
+      stripPrefix: false
+    orders:
+      path: /api/v1/orders/**
+      serviceId: order-microservice
+      stripPrefix: false
+    customers:
+      path: /api/v1/**
+      serviceId: customer-microservice
+      stripPrefix: false
+
